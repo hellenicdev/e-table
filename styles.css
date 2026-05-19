@@ -1,23 +1,84 @@
-/* General styles */
+:root {
+    --primary: #4CAF50;
+    --primary-hover: #388E3C;
+    --accent: #2196F3;
+    --accent-hover: #1976D2;
+    --danger: #f44336;
+    --danger-hover: #d32f2f;
+    --bg: #f0f2f5;
+    --surface: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #666;
+    --border: #d1d5db;
+    --radius: 10px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --transition: 0.25s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
-    padding: 0;
+    padding: 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
+/* ─── Logo ─── */
+.site-logo {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: 52px;
+    height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: opacity var(--transition);
 }
 
-h1, h2 {
+.site-logo:hover {
+    opacity: 0.8;
+}
+
+/* ─── Card ─── */
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 32px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+h1 {
     text-align: center;
-    color: #333;
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* ─── Sections ─── */
+.hidden {
+    display: none !important;
 }
 
 .menu {
@@ -26,76 +87,144 @@ h1, h2 {
     gap: 10px;
 }
 
-.restaurantButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
+/* ─── Buttons ─── */
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
     border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
+    transition: background var(--transition), transform 0.15s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.restaurantButton {
+    background: var(--primary);
+    color: #fff;
 }
 
 .restaurantButton:hover {
-    background-color: #45a049;
+    background: var(--primary-hover);
 }
 
-.hidden {
-    display: none;
+#enterButton {
+    background: var(--accent);
+    color: #fff;
+    margin-top: 6px;
+}
+
+#enterButton:hover {
+    background: var(--accent-hover);
+}
+
+#submitReservation {
+    background: var(--primary);
+    color: #fff;
+    margin-top: 8px;
+}
+
+#submitReservation:hover {
+    background: var(--primary-hover);
+}
+
+/* ─── Back Button ─── */
+.backButton {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: transparent;
+    color: var(--danger);
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.backButton:hover {
+    background: rgba(244, 67, 54, 0.08);
+    color: var(--danger-hover);
+}
+
+/* ─── Form inputs ─── */
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 12px 0 4px;
+    color: var(--text-muted);
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    background: var(--surface);
+    color: var(--text);
 }
 
-button {
-    padding: 10px;
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.18);
+}
+
+/* ─── Confirmation ─── */
+.confirmation {
+    text-align: center;
+}
+
+.confirmation h2 {
+    color: var(--primary);
+    margin-top: 24px;
+}
+
+#confirmationDetails {
+    line-height: 1.8;
+    font-size: 1rem;
+    background: #f6f9f6;
+    padding: 16px;
+    border-radius: var(--radius);
+    margin: 16px 0 0;
+    border: 1px solid #e0e8e0;
+}
+
+/* ─── Footer ─── */
+.site-footer {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-align: center;
+    padding: 20px 16px 12px;
+    font-size: 0.82rem;
+    color: #999;
+    max-width: 480px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
+/* ─── Responsive ─── */
+@media (max-width: 520px) {
+    body {
+        padding: 12px;
+    }
 
-/* Style for Enter Button */
-.enterButton {
-    background-color: #2196F3;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    margin-top: 10px;
-}
+    .container {
+        padding: 24px 18px;
+    }
 
-.enterButton:hover {
-    background-color: #1976D2;
-}
+    .site-logo {
+        width: 42px;
+        top: 8px;
+        left: 8px;
+    }
 
-/* Style for Back Button */
-.backButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-}
-
-.backButton:hover {
-    background-color: #d32f2f;
+    h1 {
+        font-size: 1.3rem;
+    }
 }

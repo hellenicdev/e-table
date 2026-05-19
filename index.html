@@ -1,84 +1,65 @@
 <!DOCTYPE html>
-<head>
-<meta name="description" content="A mock app. Supposed to be a platform where you can reserve a table at a restaurant."/>
-<meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer, mock, app, application, e-table, table, reserve, reservation, restaurant, tool, tools"/>
-<meta name="author" content="HellenicDev"/>
-<meta name="theme-color" content="#19336e"/>
 <html lang="en">
-<meta property="og:title" content="HellenicDev">
-<meta property="og:description" content="Programming projects, experiments, and tools by HellenicDev.">
-<meta property="og:image" content="https://hellenicdev.github.io/logo.webp">
-<meta property="og:url" content="https://hellenicdev.github.io">
-<meta property="og:type" content="website">
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9FWQFZME3Z');
-</script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Reservation</title>
+    <meta name="description" content="A mock app for reserving a table at a restaurant.">
+    <meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, restaurant, reservation, e-table">
+    <meta name="author" content="HellenicDev">
+    <meta name="theme-color" content="#19336e">
+    <meta property="og:title" content="HellenicDev — E-Table">
+    <meta property="og:description" content="Reserve a table at your favorite restaurant.">
+    <meta property="og:image" content="https://hellenicdev.github.io/logo.webp">
+    <meta property="og:url" content="https://hellenicdev.github.io">
+    <meta property="og:type" content="website">
+    <title>E-Table — Restaurant Reservation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="/">
-  <img src="https://hellenicdev.github.io/logo.webp" alt="Logo" class="site-logo">
-</a>
-    <div class="container">
+    <a href="/" aria-label="Home">
+        <img src="https://hellenicdev.github.io/logo.webp" alt="HellenicDev logo" class="site-logo">
+    </a>
+
+    <main class="container">
         <h1>Restaurant Reservation</h1>
 
-        <!-- Restaurant Menu -->
-        <div id="restaurantMenu" class="menu">
+        <section id="restaurantMenu" class="menu">
             <h2>Choose a Restaurant</h2>
             <button class="restaurantButton" data-restaurant="Restaurant 1">Restaurant 1</button>
             <button class="restaurantButton" data-restaurant="Restaurant 2">Restaurant 2</button>
             <button class="restaurantButton" data-restaurant="Restaurant 3">Restaurant 3</button>
             <button class="restaurantButton" data-restaurant="Restaurant 4">Restaurant 4</button>
-            <!-- Add more buttons as needed -->
-        </div>
+        </section>
 
-        <!-- Date and Time Picker -->
-        <div id="dateTimeSection" class="hidden">
+        <section id="dateTimeSection" class="hidden">
             <h2>Select a Date and Time</h2>
-            <input type="date" id="reservationDate" />
-            <input type="time" id="reservationTime" />
-            <!-- Enter Button to go to the next screen -->
-            <button id="enterButton" class="enterButton">Enter</button>
-        </div>
+            <input type="date" id="reservationDate" required>
+            <input type="time" id="reservationTime" required>
+            <button id="enterButton">Enter</button>
+        </section>
 
-        <!-- Reservation Info -->
-        <div id="reservationInfoSection" class="hidden">
-            <h2>Enter Your Reservation Details</h2>
-            <label for="reservationName">Name: </label>
-            <input type="text" id="reservationName" placeholder="Your Name" required />
-            <label for="reservationEmail">Email: </label>
-            <input type="email" id="reservationEmail" placeholder="Your Email" required />
+        <section id="reservationInfoSection" class="hidden">
+            <h2>Your Details</h2>
+            <label for="reservationName">Name</label>
+            <input type="text" id="reservationName" placeholder="Your Name" required>
+
+            <label for="reservationEmail">Email</label>
+            <input type="email" id="reservationEmail" placeholder="your@email.com" required>
+
             <button id="submitReservation">Submit Reservation</button>
-        </div>
+        </section>
 
-        <!-- Confirmation Message -->
-        <div id="confirmationMessage" class="hidden">
-            <!-- Back Button -->
-            <button id="backButton" class="backButton">Back</button>
+        <section id="confirmationMessage" class="hidden confirmation">
+            <button id="backButton" class="backButton" aria-label="Go back">&larr; Back</button>
             <h2>Reservation Confirmed!</h2>
             <p id="confirmationDetails"></p>
-        </div>
-    </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2025-2026 HellenicDev — All projects and content belong to HellenicDev.
+    </footer>
 
     <script src="script.js"></script>
 </body>
-<style>.site-logo {
-  position: fixed;   /* stays visible at all times */
-  top: 10px;
-  left: 10px;
-  width: 60px;       /* adjust size */
-  height: auto;
-  z-index: 9999;     /* stays above everything */
-}</style>
-<footer style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 9999; text-align: center; font-size: 14px; color: gray; background: white;
-">
-  © 2025-2026 HellenicDev — All projects and content belong to HellenicDev.
-</footer>
 </html>
