@@ -10,7 +10,18 @@ const state = { restaurant: '' };
 
 function show(...show) {
     Object.values(sections).forEach((el) => el.classList.toggle('hidden', !show.includes(el)));
+    // Move focus to the new step so keyboard and screen-reader users follow along.
+    const heading = show[0] && show[0].querySelector('h2');
+    if (heading) heading.focus();
 }
+
+// Reservations can only be made from today onwards.
+function todayISO() {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().slice(0, 10);
+}
+$('reservationDate').min = todayISO();
 
 document.querySelectorAll('.restaurantButton').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -23,6 +34,7 @@ $('enterButton').addEventListener('click', () => {
     const date = $('reservationDate').value;
     const time = $('reservationTime').value;
     if (!date || !time) return alert('Please select a valid date and time.');
+    if (date < todayISO()) return alert('Please pick today or a future date.');
     show(sections.info);
 });
 
@@ -33,6 +45,7 @@ $('submitReservation').addEventListener('click', () => {
     const time = $('reservationTime').value;
 
     if (!name || !email || !date || !time) return alert('Please fill in all fields.');
+    if (!$('reservationEmail').checkValidity()) return alert('Please enter a valid email address.');
 
     $('confirmationDetails').innerHTML = `
         Reservation for <strong>${esc(name)}</strong><br>

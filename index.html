@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#19336e">
     <meta property="og:title" content="HellenicDev — E-Table">
     <meta property="og:description" content="Reserve a table at your favorite restaurant.">
-    <meta property="og:image" content="https://hellenicdev.eu/logo.webp">
+    <meta property="og:image" content="https://hellenicdev.eu/og-image.png">
     <meta property="og:url" content="https://hellenicdev.eu/e-table/">
     <meta property="og:type" content="website">
     <title>E-Table — Restaurant Reservation</title>
@@ -25,35 +25,37 @@
         <h1>Restaurant Reservation</h1>
 
         <section id="restaurantMenu" class="menu">
-            <h2>Choose a Restaurant</h2>
-            <button class="restaurantButton" data-restaurant="Restaurant 1">Restaurant 1</button>
-            <button class="restaurantButton" data-restaurant="Restaurant 2">Restaurant 2</button>
-            <button class="restaurantButton" data-restaurant="Restaurant 3">Restaurant 3</button>
-            <button class="restaurantButton" data-restaurant="Restaurant 4">Restaurant 4</button>
+            <h2 tabindex="-1">Choose a Restaurant</h2>
+            <button type="button" class="restaurantButton" data-restaurant="Restaurant 1">Restaurant 1</button>
+            <button type="button" class="restaurantButton" data-restaurant="Restaurant 2">Restaurant 2</button>
+            <button type="button" class="restaurantButton" data-restaurant="Restaurant 3">Restaurant 3</button>
+            <button type="button" class="restaurantButton" data-restaurant="Restaurant 4">Restaurant 4</button>
         </section>
 
         <section id="dateTimeSection" class="hidden">
-            <h2>Select a Date and Time</h2>
+            <h2 tabindex="-1">Select a Date and Time</h2>
+            <label for="reservationDate">Date</label>
             <input type="date" id="reservationDate" required>
+            <label for="reservationTime">Time</label>
             <input type="time" id="reservationTime" required>
-            <button id="enterButton">Enter</button>
+            <button type="button" id="enterButton">Enter</button>
         </section>
 
         <section id="reservationInfoSection" class="hidden">
-            <h2>Your Details</h2>
+            <h2 tabindex="-1">Your Details</h2>
             <label for="reservationName">Name</label>
-            <input type="text" id="reservationName" placeholder="Your Name" required>
+            <input type="text" id="reservationName" placeholder="Your Name" autocomplete="name" required>
 
             <label for="reservationEmail">Email</label>
-            <input type="email" id="reservationEmail" placeholder="your@email.com" required>
+            <input type="email" id="reservationEmail" placeholder="your@email.com" autocomplete="email" required>
 
-            <button id="submitReservation">Submit Reservation</button>
+            <button type="button" id="submitReservation">Submit Reservation</button>
         </section>
 
         <section id="confirmationMessage" class="hidden confirmation">
-            <button id="backButton" class="backButton" aria-label="Go back">&larr; Back</button>
-            <h2>Reservation Confirmed!</h2>
-            <p id="confirmationDetails"></p>
+            <button type="button" id="backButton" class="backButton">&larr; Make another reservation</button>
+            <h2 tabindex="-1">Reservation Confirmed!</h2>
+            <p id="confirmationDetails" aria-live="polite"></p>
         </section>
     </main>
 
